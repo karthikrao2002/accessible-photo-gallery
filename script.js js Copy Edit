@@ -1,0 +1,28 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const galleryImages = document.querySelectorAll("#gallery figure");
+    const previewDiv = document.getElementById("preview");
+    
+    galleryImages.forEach(figure => {
+        figure.addEventListener("mouseover", function () {
+            const img = figure.querySelector("img");
+            previewDiv.style.backgroundImage = `url(${img.src})`;
+            previewDiv.innerHTML = `<p>${img.alt}</p>`;
+        });
+
+        figure.addEventListener("mouseleave", function () {
+            previewDiv.style.backgroundImage = "";
+            previewDiv.innerHTML = `<p>Hover over an image below to display here.</p>`;
+        });
+
+        figure.addEventListener("focus", function () {
+            const img = figure.querySelector("img");
+            previewDiv.style.backgroundImage = `url(${img.src})`;
+            previewDiv.innerHTML = `<p>${img.alt}</p>`;
+        });
+
+        figure.addEventListener("blur", function () {
+            previewDiv.style.backgroundImage = "";
+            previewDiv.innerHTML = `<p>Hover over an image below to display here.</p>`;
+        });
+    });
+});
